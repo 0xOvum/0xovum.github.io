@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Introducción al Análisis de Malware - 0xOvum</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Introducción al Análisis de Malware  I think computer viruses should count as life. I think it says something about human nature that the only form of life we have created so far is purely destructive. We&rsquo;ve created life in our own image. - Stephen Hawking.
+ Cuando se trata de analizar Malware, su propósito final es llegar a conseguir la información necesaria para poder responder ante un ataque de Malware." />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Introducción al Análisis de Malware" />
+<meta property="og:description" content="Introducción al Análisis de Malware  I think computer viruses should count as life. I think it says something about human nature that the only form of life we have created so far is purely destructive. We&rsquo;ve created life in our own image. - Stephen Hawking.
+ Cuando se trata de analizar Malware, su propósito final es llegar a conseguir la información necesaria para poder responder ante un ataque de Malware." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xovum.github.io/posts/post-1/" />
+<meta property="article:published_time" content="2022-02-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Introducción al Análisis de Malware"/>
+<meta name="twitter:description" content="Introducción al Análisis de Malware  I think computer viruses should count as life. I think it says something about human nature that the only form of life we have created so far is purely destructive. We&rsquo;ve created life in our own image. - Stephen Hawking.
+ Cuando se trata de analizar Malware, su propósito final es llegar a conseguir la información necesaria para poder responder ante un ataque de Malware."/>
+<script src="https://0xovum.github.iojs/feather.min.js"></script>
+	
+	
+        <link href="https://0xovum.github.io/css/fonts.b685ac6f654695232de7b82a9143a46f9e049c8e3af3a21d9737b01f4be211d1.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://0xovum.github.io/css/main.a2e029f1d3dce00ddc860b1295d22591fa57b2704a7bf06fbcc57422bbea0223.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://0xovum.github.io/css/dark.f30c4eba61b3e375f6a8a356898c95c2f82c6744fff4e49134ae295543127476.css" media="(prefers-color-scheme: dark)"  />
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://0xovum.github.io">0xOvum</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/posts">All posts</a>
+		
+		<a href="/tags">Tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Introducción al Análisis de Malware</h1>
+			<div class="meta">Posted on Feb 17, 2022</div>
+		</div>
+		
+
+		<section class="body">
+			<h1 id="introducción-al-análisis-de-malware">Introducción al Análisis de Malware</h1>
+<blockquote>
+<p><em>I think computer viruses should count as life. I think it says something about human nature that the only form of life we have created so far is purely destructive. We&rsquo;ve created life in our own image.</em>
+- Stephen Hawking.</p>
+</blockquote>
+<p>Cuando se trata de analizar Malware, su propósito final es llegar a conseguir la información necesaria para poder responder ante un ataque de Malware. La meta es determinar/estudiar exactamente cómo funciona un ejecutable sospechoso, con el fin de <strong>detectarlo y así poder poder medir y contener su daño para prevenir futuras infecciones</strong>.</p>
+<p>Existen diferentes técnicas a la hora de analizar Malware (análisis estático, dinámico, de código&hellip;) aún así, debemos de tener en cuenta que hay otras áreas a la hora de analizar también muy importantes que podrían darnos más datos sobre la muestra que estemos analizando:</p>
+<ul>
+<li>Análisis de Memoria: Esta es una técnica muy útil, ya que con ella podremos examinar información dumpeada de una máquina que haya sido infectada para analizarla.</li>
+<li>Análisis de Red: Con esta técnica podremos identificar el tráfico que hay en la red para examinar comuniciones que hayan podido ocurrir durante la infección, como por ejemplo: un C2C.</li>
+<li>Análisis de Archivos del Sistema: Esta técnica se basa centralmente en recuperar data que haya podido ser borrada del sistema para poder examinarla.</li>
+</ul>
+<p>Una vez que identificados cuáles archivos requieren un completo análisis y los hayamos estudiado, podremos desarrollar firmas (signatures) para detectar infecciones de Malware.</p>
+<ul>
+<li>Host-based signatures: o indicadores, son usadas para detectar código malicioso en los ordenadores víctimas. Estos indicadores a menudo identifican archivos creados o modificados por el Malware o cambios específicos realizados en los registros. A diferencia de las firmas de los AV, los indicadores de Malware se centran en <strong>qué hace el Malware a un sistema</strong>, no en las caracterísicas del Malware ensimismo, lo que lo hace más eficaz en detectar Malware que cambia de forma (polimórfico) o que ha sido eliminado del disco duro.</li>
+<li>Network signatures: son usadas para detectar código malicioso a través de la monitorización del tráfico de red. Las network-signatures pueden ser creadas sin un análisis de Malware, pero las firmas creadas con la ayuda de un análisis de Malware son usualmente más eficaces, ofreciendo mayor porcentaje detección y menos falsos positivos.</li>
+</ul>
+<p><strong>El objetivo final es figurarse exactamente cómo funciona el Malware</strong>.</p>
+<h1 id="tipos-de-malware">Tipos de Malware</h1>
+<p>El Malware abarca diferentes categorías. Por ejemplo, un programa podría tener un keylogger que recopila contraseñas y un gusano que envía spam. Además, el Malware puede ser clasificado en base del objetivo del atacante, si se trata de un ataque masivo o dirigido. El Malware masivo (como un scareware) está diseñado para afectar a tantas máquinas posibles. El Malware masivo es el más común y es menos sofisticado, suele ser fácil de detectar y de defender. El Malware dirigido contra un objetivo en específico, está diseñado para una organización en concreto. Este tipo de Malware es una gran amenaza, ya que no está muy extendido y los AVs en muchos casos no pueden llegar a detectarlo.</p>
+<p>Diferentes tipos de Malware:</p>
+<ul>
+<li>Backdoor: Código malicioso que se instala asimismo en un ordenador para permitir acceso al atacante. Las backdoors permiten al atacante conectarse remotamente al ordenador infectado con autenticación (o no) y ejecutar comandos en el sistema infectado.</li>
+<li>Botnet: Similiar a los backdoors, en el sentido que permite al atacante acceder al sistema, pero todos los ordenadores infectados con la misma botnet reciben las mismas instrucciones desde un solo servidor command-and-control.</li>
+<li>Downloader: Código malicioso que existe únicamente para descargar otro código malicioso. Los Downloaders son comunmente instalados por atacantes cuando ellos ganan acceso inicial a un sistema. El Downloader descargará e instalará código malicioso adicional.</li>
+<li>Information-stealing malware: El malware recolecta información del ordenador de la víctima y la envía al atacante. Los ejemplos incluyes sniffers, password hash grabbers y keyloggers. Este malware es típicamente usado para conseguir acceso a las cuentas online, como emails o cuentas bancarias.</li>
+<li>Launcher: Programa malicioso usado para lanzar otros programas maliciosos. Normalmente, los launchers usan técnicas no tradicionales para lanzar otros programas maliciosos para asegurarse el sigilio en el sistema u obtener un acceso mayor al sistema.</li>
+<li>Rootkit: Código malicioso diseñado para ocultar la existencia de otro código. Los rootkits normalmente van ligados a otro Malware, como backdoors, permitiendo al atacante acceder remotamente y hacer que el código sea más dificil de detectar para la víctima.</li>
+<li>Scareware: Malware diseñado para asustar a un usuario infectado para que compre algo. Normalmente tiene una interfaz que le hace parecer un antivirus u otro programa de seguridad. Estos hacen creer al usuario que el ordenador está infectado con algo malicioso y la única manera de deshacerse de este es comprando su &ldquo;software&rdquo;, cuando en realidad, el software que se vende no hace nada más que en realidad quitar el scareware.</li>
+<li>Spam-Sending: Malware que infecta la máquina de un usuario y entonces usa la máquina infectada para enviar spam. Este Malware genera ingresos para atacantes permitiéndoles vender servicios de envío de spam.</li>
+<li>Worm o virus: Código malicioso que se copia asimismo e infecta ordenadores adicionales.</li>
+</ul>
+<h1 id="técnicas-de-análisis-de-malware">Técnicas de análisis de Malware</h1>
+<p>La mayoría de las veces, cuando se lleva a cabo un análisis de Malware, solamente tendrás el ejecutable que contiene este Malware, el cuál será dificil de leer a simple vista. Se tendrá que hacer uso de varias herramientas y trucos con los cuales se irán descubriendo pequeñas cantidades de información útil para entender el Malware analizado. Como cuando se hace un puzzle, habrá que ir pieza por pieza con el fin de ver la imagen completa. Hay que tener muy en cuenta que algunos tipos de Malware, pueden estar ofuscados, usar técnicas anti-vm o anti-debugging, hacer uso de packers y demás métodos para intentar ocultarlo ante AVs o hacer el análisis más complicado.</p>
+<p>Hay dos enfoques fundamentales para analizar Malware: estático y dinámico. <strong>El análisis estático se centra en examinar el Malware sin llegar a ejecutarlo</strong>, mientras que el <strong>análisis dinámico se centra mientras se está ejecutando el Malware</strong>.</p>
+<h2 id="análisis-estático">Análisis Estático</h2>
+<p>El análisis estático básico consiste en examinar el archivo sin llegar a ejecutarlo. Mediante este tipo de análisis podemos extraer metadata del binario para confirmar si un archivo es malicioso, ofrecer información sobre su funcionalidad, imports que haga el binario, strings, fecha de compilación, etc. Hay que tener en cuenta que el análisis estático no siempre sacará información muy relevante, pero sí ayudará para saber tener una vista general del binario y saber dónde centrarnos en análisis más exahustivos.</p>
+<h2 id="análisis-dinámico">Análisis Dinámico</h2>
+<p>Las técnicas usadas en un análisis dinámico básico requieren ejecutar el Malware y observar su comportamiento en el sistema.  Es IMPORTANTE que antes de que puedas ejecutar el Malware de una forma segura, <strong>debes configurar un entorno seguro que te permita estudiar el funcionamiento del Malware sin riesgos de que dañe tu sistema o red</strong>.  Durante este tipo de análisis se hará uso de debuggers para ver las instrucciones a tiempo real del binario y otras herramientas de monitorización para vigilar procesos que puedan abrirse, modificaciones de registros de Windows, etc.
+Se puede hacer uso de sandboxes, como por ejemplo <a href="https://any.run/">AnyRun</a> para ejecutar el archivo a analizar y ver su comportamiento en directo y así no poner en peligro nuestro equipo.</p>
+<p>En otros posts iré adentrándome más en cada técnica y conceptos que podemos encontrar en este mundo, ya que esto es una muy breve introducción sobre el análisis de Malware.
+No soy ningún experto, ni mucho menos, por lo que cualquier consejo, corrección o ayuda será bien agradecida.</p>
+<p>Recursos:</p>
+<ul>
+<li><a href="https://www.packtpub.com/product/learning-malware-analysis/9781788392501">https://www.packtpub.com/product/learning-malware-analysis/9781788392501</a></li>
+<li><a href="https://class.malware.re/syllabus.html">https://class.malware.re/syllabus.html</a></li>
+<li><a href="https://blog.malwarebytes.com/security-world/2012/09/so-you-want-to-be-a-malware-analyst/">https://blog.malwarebytes.com/security-world/2012/09/so-you-want-to-be-a-malware-analyst/</a></li>
+<li><a href="https://hshrzd.wordpress.com/how-to-start/">https://hshrzd.wordpress.com/how-to-start/</a></li>
+<li><a href="https://www.amazon.es/Practical-Malware-Analysis-Hands-Dissecting/dp/1593272901">https://www.amazon.es/Practical-Malware-Analysis-Hands-Dissecting/dp/1593272901</a></li>
+<li><a href="https://exploitreversing.com/">https://exploitreversing.com/</a></li>
+</ul>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/malware-analysis">malware-analysis</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/0xOvum" title="GitHub"><i data-feather="github"></i></a></div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>
