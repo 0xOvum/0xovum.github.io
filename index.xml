@@ -6,10 +6,19 @@
     <description>Recent content on 0xOvum</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Feb 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://0xovum.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Análisis Estático de Malware (Parte 1)</title>
+      <link>https://0xovum.github.io/posts/post-2/</link>
+      <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://0xovum.github.io/posts/post-2/</guid>
+      <description>Análisis Estático de Malware (Parte 1) Como ya dijimos, esta método se basa en el análisis del binario sin llegar a ejecutarlo. Suele ser el primer paso a la hora de estudiar el comportamiento de cualquier binario sospechoso y gracias a él probablemente podremos sacar información valiosa para darnos una idea de dónde podemos poner nuestro foco de atención para análisis más exhaustivos. Básicamente, un reconocimiento inicial sobre a qué nos vamos a enfrentar.</description>
+    </item>
     
     <item>
       <title>Introducción al Análisis de Malware</title>
